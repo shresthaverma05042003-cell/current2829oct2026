@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indian Express Analysis Quiz (28–29 Oct 2026)</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --correct-bg: #dcfce7;
+      --correct-border: #22c55e;
+      --correct-text: #15803d;
+      --wrong-bg: #fee2e2;
+      --wrong-border: #ef4444;
+      --wrong-text: #b91c1c;
+      --accent-bg: #eff6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 24px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      margin: 32px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary);
+      color: #0f172a;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .question-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+
+    .options-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      background-color: var(--accent-bg);
+      border-color: var(--primary);
+    }
+
+    .option-item input {
+      margin-right: 12px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .btn-submit {
+      margin-top: 16px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .explanation {
+      display: none;
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .explanation.show {
+      display: block;
+    }
+
+    .explanation.correct {
+      background-color: var(--correct-bg);
+      border: 1px solid var(--correct-border);
+      color: var(--correct-text);
+    }
+
+    .explanation.incorrect {
+      background-color: var(--wrong-bg);
+      border: 1px solid var(--wrong-border);
+      color: var(--wrong-text);
+    }
+
+    .explanation-title {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .score-banner {
+      position: sticky;
+      top: 20px;
+      background: #0f172a;
+      color: white;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Indian Express Analysis Quiz</h1>
+    <div class="subtitle">28–29 October 2026</div>
+  </header>
+
+  <div class="score-banner">
+    <div><strong>Progress:</strong> <span id="answered-count">0</span> / 25 Answered</div>
+    <div><strong>Score:</strong> <span id="score-count">0</span> / 25</div>
+  </div>
+
+  <form id="quiz-form">
+    <!-- SECTION 1 -->
+    <h2 class="section-title">SECTION I — ISRAEL'S ELECTORAL SYSTEM & GOVERNMENT FORMATION</h2>
+
+    <div class="card" data-q="q1" data-type="single" data-answer="B">
+      <div class="question-title">Q1. Which feature most accurately distinguishes Israel's electoral system as described in the notes?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q1" value="A"> A. Voters directly elect individual constituency candidates</label>
+        <label class="option-item"><input type="radio" name="q1" value="B"> B. Voters vote for party lists and seats are allocated proportionally</label>
+        <label class="option-item"><input type="radio" name="q1" value="C"> C. The President nominates all 120 legislators</label>
+        <label class="option-item"><input type="radio" name="q1" value="D"> D. Only parties winning a majority of votes enter parliament</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q1')">Check Answer</button>
+      <div class="explanation" id="exp-q1">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> Under proportional representation, voters choose party lists and seats broadly reflect each party's vote share.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q2" data-type="single" data-answer="B">
+      <div class="question-title">Q2. Israel's Knesset has 120 members. A party secures 30% of the relevant vote share. Under the simplified example in the notes, how many seats would it receive?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q2" value="A"> A. 30</label>
+        <label class="option-item"><input type="radio" name="q2" value="B"> B. 36</label>
+        <label class="option-item"><input type="radio" name="q2" value="C"> C. 40</label>
+        <label class="option-item"><input type="radio" name="q2" value="D"> D. 61</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q2')">Check Answer</button>
+      <div class="explanation" id="exp-q2">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> 30% of 120 = 36 seats.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q3" data-type="multiple" data-answer="A,B,D">
+      <div class="question-title">Q3. Which statements about Israel's Knesset and electoral system are consistent with the supplied notes? (Select all that apply.)</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="checkbox" name="q3" value="A"> A. It is a unicameral legislature.</label>
+        <label class="option-item"><input type="checkbox" name="q3" value="B"> B. Its members are elected for a four-year term.</label>
+        <label class="option-item"><input type="checkbox" name="q3" value="C"> C. The electoral threshold mentioned is 5%.</label>
+        <label class="option-item"><input type="checkbox" name="q3" value="D"> D. The legislature consists of 120 members.</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q3')">Check Answer</button>
+      <div class="explanation" id="exp-q3">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes describe a unicameral, 120-member Knesset with four-year terms. The threshold given is 3.25%, not 5%.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q4" data-type="single" data-answer="A">
+      <div class="question-title">Q4. A political party in Israel must secure at least 3.25% of votes to enter the Knesset, according to the supplied notes.</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q4" value="A"> A. True</label>
+        <label class="option-item"><input type="radio" name="q4" value="B"> B. False</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q4')">Check Answer</button>
+      <div class="explanation" id="exp-q4">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes explicitly give 3.25% as the electoral threshold for parliamentary entry.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q5" data-type="single" data-answer="B">
+      <div class="question-title">Q5. What is the minimum number of seats required to command a parliamentary majority in Israel's 120-member Knesset?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q5" value="A"> A. 60</label>
+        <label class="option-item"><input type="radio" name="q5" value="B"> B. 61</label>
+        <label class="option-item"><input type="radio" name="q5" value="C"> C. 62</label>
+        <label class="option-item"><input type="radio" name="q5" value="D"> D. 80</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q5')">Check Answer</button>
+      <div class="explanation" id="exp-q5">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> A majority must exceed half of 120; therefore, 61 is the minimum.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q6" data-type="single" data-answer="C">
+      <div class="question-title">Q6. According to the notes, how much time does the President grant for the floor test during the government-formation process?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q6" value="A"> A. 14 days</label>
+        <label class="option-item"><input type="radio" name="q6" value="B"> B. 21 days</label>
+        <label class="option-item"><input type="radio" name="q6" value="C"> C. 28 days</label>
+        <label class="option-item"><input type="radio" name="q6" value="D"> D. 42 days</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q6')">Check Answer</button>
+      <div class="explanation" id="exp-q6">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes state that the President grants 28 days for the floor test.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q7" data-type="multiple" data-answer="A,B,C">
+      <div class="question-title">Q7. Which factors concerning Arab-led parties in Israel are mentioned in the notes? (Select all that apply.)</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="checkbox" name="q7" value="A"> A. Joint List and Ra'am together won 19 seats.</label>
+        <label class="option-item"><input type="checkbox" name="q7" value="B"> B. Arab citizens constitute 21% of Israel's population.</label>
+        <label class="option-item"><input type="checkbox" name="q7" value="C"> C. Tensions between Arab parties affect their political coordination.</label>
+        <label class="option-item"><input type="checkbox" name="q7" value="D"> D. Arab-led parties are constitutionally prohibited from coalition governments.</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q7')">Check Answer</button>
+      <div class="explanation" id="exp-q7">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes mention 19 seats, a 21% population share, marginalisation in housing and infrastructure, and tussles between Arab parties. They do not mention a constitutional prohibition on coalition participation.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q8" data-type="single" data-answer="A">
+      <div class="question-title">Q8. In the simplified example in the notes, parties polling below the 3.25% threshold are excluded from the parliamentary seat-allocation baseline.</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q8" value="A"> A. True</label>
+        <label class="option-item"><input type="radio" name="q8" value="B"> B. False</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q8')">Check Answer</button>
+      <div class="explanation" id="exp-q8">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The example excludes parties D, E and F, each below the threshold, and treats the remaining 90% as the simplified baseline.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <h2 class="section-title">SECTION II — KOCHI ROAD RAGE, MOTOR VEHICLES ACT & SENTENCING</h2>
+
+    <div class="card" data-q="q9" data-type="single" data-answer="B">
+      <div class="question-title">Q9. Under Section 199A of the Motor Vehicles Act, as described in the notes, who may be held accountable when a minor commits an offence using a vehicle?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q9" value="A"> A. Only the minor's school principal</label>
+        <label class="option-item"><input type="radio" name="q9" value="B"> B. The guardian or vehicle owner</label>
+        <label class="option-item"><input type="radio" name="q9" value="C"> C. Only the vehicle manufacturer</label>
+        <label class="option-item"><input type="radio" name="q9" value="D"> D. Only the licensing authority</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q9')">Check Answer</button>
+      <div class="explanation" id="exp-q9">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes state that the guardian or vehicle owner may be held accountable when a minor commits the specified offence.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q10" data-type="single" data-answer="C">
+      <div class="question-title">Q10. Which punishment is mentioned in the notes in connection with Section 199A of the Motor Vehicles Act?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q10" value="A"> A. Up to 1 year imprisonment and ₹10,000 fine</label>
+        <label class="option-item"><input type="radio" name="q10" value="B"> B. Up to 2 years imprisonment and ₹20,000 fine</label>
+        <label class="option-item"><input type="radio" name="q10" value="C"> C. 3 years imprisonment and ₹25,000 fine</label>
+        <label class="option-item"><input type="radio" name="q10" value="D"> D. 5 years imprisonment and ₹50,000 fine</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q10')">Check Answer</button>
+      <div class="explanation" id="exp-q10">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes specify three years' imprisonment and a fine of ₹25,000.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q11" data-type="single" data-answer="A">
+      <div class="question-title">Q11. In the Kochi road-rage incident described in the notes, which offence was mentioned in connection with the driver?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q11" value="A"> A. Culpable homicide not amounting to murder under Section 105 of the BNS</label>
+        <label class="option-item"><input type="radio" name="q11" value="B"> B. Murder under Section 101 of the BNS</label>
+        <label class="option-item"><input type="radio" name="q11" value="C"> C. Causing death by negligence under Section 106 of the BNS</label>
+        <label class="option-item"><input type="radio" name="q11" value="D"> D. Organised crime under Section 111 of the BNS</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q11')">Check Answer</button>
+      <div class="explanation" id="exp-q11">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes identify culpable homicide not amounting to murder under Section 105 of the Bharatiya Nyaya Sanhita.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q12" data-type="single" data-answer="B">
+      <div class="question-title">Q12. Which institution is mentioned in the notes as being set up in the context of the minor involved in the incident?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q12" value="A"> A. Central Administrative Tribunal</label>
+        <label class="option-item"><input type="radio" name="q12" value="B"> B. Juvenile Justice Board</label>
+        <label class="option-item"><input type="radio" name="q12" value="C"> C. National Green Tribunal</label>
+        <label class="option-item"><input type="radio" name="q12" value="D"> D. State Human Rights Commission</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q12')">Check Answer</button>
+      <div class="explanation" id="exp-q12">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes specifically mention the Juvenile Justice Board as relevant background.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q13" data-type="single" data-answer="B">
+      <div class="question-title">Q13. What central problem does the Sunita Devi v. State of Bihar discussion highlight in relation to sentencing?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q13" value="A"> A. Excessive use of jury trials</label>
+        <label class="option-item"><input type="radio" name="q13" value="B"> B. Unguided judicial discretion</label>
+        <label class="option-item"><input type="radio" name="q13" value="C"> C. Absence of appellate courts</label>
+        <label class="option-item"><input type="radio" name="q13" value="D"> D. Complete absence of statutory punishments</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q13')">Check Answer</button>
+      <div class="explanation" id="exp-q13">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes identify unguided discretion as a concern in sentencing and pendency.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q14" data-type="single" data-answer="B">
+      <div class="question-title">Q14. Which statement best describes the sentencing problem identified in the notes?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q14" value="A"> A. Indian statutes never prescribe minimum sentences.</label>
+        <label class="option-item"><input type="radio" name="q14" value="B"> B. Indian statutes generally prescribe maximum and minimum sentences, but judges may still face difficulty in selecting an appropriate sentence.</label>
+        <label class="option-item"><input type="radio" name="q14" value="C"> C. Judges are legally barred from considering the seriousness of an offence.</label>
+        <label class="option-item"><input type="radio" name="q14" value="D"> D. Every offence carries one mandatory sentence with no judicial discretion.</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q14')">Check Answer</button>
+      <div class="explanation" id="exp-q14">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes say Indian statutes prescribe minimum and maximum sentences, while highlighting the need for better guidance in exercising discretion.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q15" data-type="single" data-answer="B">
+      <div class="question-title">Q15. Which of the following is proposed as a solution to sentencing inconsistency in the notes?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q15" value="A"> A. Abolishing judicial discretion in every criminal case</label>
+        <label class="option-item"><input type="radio" name="q15" value="B"> B. Creating a Sentencing Council to develop guidelines for judges</label>
+        <label class="option-item"><input type="radio" name="q15" value="C"> C. Transferring sentencing powers to the executive</label>
+        <label class="option-item"><input type="radio" name="q15" value="D"> D. Replacing statutory penalties with informal warnings</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q15')">Check Answer</button>
+      <div class="explanation" id="exp-q15">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The proposed solution is the creation of a Sentencing Council to develop sentencing guidelines.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q16" data-type="single" data-answer="A">
+      <div class="question-title">Q16. Which sequence best reflects the three-stage sentencing approach described in the notes?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q16" value="A"> A. Determine starting point → assess seriousness → individualise the sentence</label>
+        <label class="option-item"><input type="radio" name="q16" value="B"> B. Individualise the sentence → determine starting point → assess seriousness</label>
+        <label class="option-item"><input type="radio" name="q16" value="C"> C. Assess seriousness → individualise the sentence → determine starting point</label>
+        <label class="option-item"><input type="radio" name="q16" value="D"> D. Determine starting point → impose maximum sentence → dispense with reasons</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q16')">Check Answer</button>
+      <div class="explanation" id="exp-q16">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes describe first assessing seriousness and determining a starting point, followed by individualisation.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q17" data-type="single" data-answer="B">
+      <div class="question-title">Q17. Under the accountability mechanism described in the notes, what should a judge do when departing from sentencing guidelines?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q17" value="A"> A. Seek prior approval from the legislature</label>
+        <label class="option-item"><input type="radio" name="q17" value="B"> B. Give written reasons for the deviation</label>
+        <label class="option-item"><input type="radio" name="q17" value="C"> C. Automatically impose the maximum sentence</label>
+        <label class="option-item"><input type="radio" name="q17" value="D"> D. Refer the case to the Election Commission</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q17')">Check Answer</button>
+      <div class="explanation" id="exp-q17">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes propose written reasons when a judge deviates from the guidelines, improving transparency and accountability.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <h2 class="section-title">SECTION III — JIO IPO & FOOD-COLOURING RISK</h2>
+
+    <div class="card" data-q="q18" data-type="single" data-answer="C">
+      <div class="question-title">Q18. According to the notes, what was the reported first-day market movement of Jio Platforms after its market debut?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q18" value="A"> A. 16.6% rise</label>
+        <label class="option-item"><input type="radio" name="q18" value="B"> B. 20.0% rise</label>
+        <label class="option-item"><input type="radio" name="q18" value="C"> C. 26.6% rise</label>
+        <label class="option-item"><input type="radio" name="q18" value="D"> D. 36.6% rise</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q18')">Check Answer</button>
+      <div class="explanation" id="exp-q18">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes report a 26.6% rise on the first day.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q19" data-type="multiple" data-answer="A,B,C">
+      <div class="question-title">Q19. Which statements about the Jio Platforms market debut are consistent with the notes? (Select all that apply.)</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="checkbox" name="q19" value="A"> A. Its market capitalisation was reported as ₹13.05 lakh crore.</label>
+        <label class="option-item"><input type="checkbox" name="q19" value="B"> B. It was described as India's second-most valuable company.</label>
+        <label class="option-item"><input type="checkbox" name="q19" value="C"> C. Reliance Industries Limited was identified as the first.</label>
+        <label class="option-item"><input type="checkbox" name="q19" value="D"> D. The combined Reliance Group valuation was reported as ₹9.57 lakh crore.</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q19')">Check Answer</button>
+      <div class="explanation" id="exp-q19">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes give Jio Platforms' market capitalisation as ₹13.05 lakh crore, identify it as second-most valuable, and place Reliance Industries Limited first. The combined Reliance Group figure is ₹29.57 lakh crore, not ₹9.57 lakh crore.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q20" data-type="single" data-answer="B">
+      <div class="question-title">Q20. Which industrial dye is identified in the notes as the principal culprit behind the red colouring risk in certain foods?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q20" value="A"> A. Tartrazine</label>
+        <label class="option-item"><input type="radio" name="q20" value="B"> B. Rhodamine-B</label>
+        <label class="option-item"><input type="radio" name="q20" value="C"> C. Brilliant Blue FCF</label>
+        <label class="option-item"><input type="radio" name="q20" value="D"> D. Sunset Yellow FCF</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q20')">Check Answer</button>
+      <div class="explanation" id="exp-q20">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> Rhodamine-B is identified in the notes as the red industrial dye of concern.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q21" data-type="multiple" data-answer="A,B">
+      <div class="question-title">Q21. Which health risks are associated with Rhodamine-B in the supplied notes? (Select all that apply.)</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="checkbox" name="q21" value="A"> A. Liver dysfunction</label>
+        <label class="option-item"><input type="checkbox" name="q21" value="B"> B. Cancer</label>
+        <label class="option-item"><input type="checkbox" name="q21" value="C"> C. Improved liver function</label>
+        <label class="option-item"><input type="checkbox" name="q21" value="D"> D. Enhanced immunity</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q21')">Check Answer</button>
+      <div class="explanation" id="exp-q21">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes associate Rhodamine-B with liver dysfunction and cancer; they do not describe health benefits.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q22" data-type="single" data-answer="A">
+      <div class="question-title">Q22. Which legislation provides the legal framework identified in the notes for food-safety regulation?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q22" value="A"> A. Food Safety and Standards Act, 2006</label>
+        <label class="option-item"><input type="radio" name="q22" value="B"> B. Essential Commodities Act, 1955</label>
+        <label class="option-item"><input type="radio" name="q22" value="C"> C. Consumer Protection Act, 2019</label>
+        <label class="option-item"><input type="radio" name="q22" value="D"> D. Legal Metrology Act, 2009</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q22')">Check Answer</button>
+      <div class="explanation" id="exp-q22">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes identify the Food Safety and Standards Act, 2006 as the relevant legal framework.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q23" data-type="single" data-answer="B">
+      <div class="question-title">Q23. What punishment is mentioned in the notes for the relevant food-safety violation?</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q23" value="A"> A. 3 months' imprisonment and ₹1 lakh fine</label>
+        <label class="option-item"><input type="radio" name="q23" value="B"> B. 6 months' imprisonment and ₹3 lakh fine</label>
+        <label class="option-item"><input type="radio" name="q23" value="C"> C. 1 year's imprisonment and ₹5 lakh fine</label>
+        <label class="option-item"><input type="radio" name="q23" value="D"> D. 3 years' imprisonment and ₹10 lakh fine</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q23')">Check Answer</button>
+      <div class="explanation" id="exp-q23">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes mention six months' imprisonment and a fine of ₹3 lakh.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q24" data-type="single" data-answer="A">
+      <div class="question-title">Q24. The notes state that food colours are not banned altogether, but their use is subject to food-safety regulation and should not be indiscriminate.</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="radio" name="q24" value="A"> A. True</label>
+        <label class="option-item"><input type="radio" name="q24" value="B"> B. False</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q24')">Check Answer</button>
+      <div class="explanation" id="exp-q24">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> The notes distinguish between a blanket ban and regulation of permitted food colours, while warning against inappropriate use.</p>
+      </div>
+    </div>
+
+    <div class="card" data-q="q25" data-type="multiple" data-answer="A,B">
+      <div class="question-title">Q25. Which of the following food items are specifically mentioned in the notes as examples where industrial dyes may be used? (Select all that apply.)</div>
+      <ul class="options-list">
+        <label class="option-item"><input type="checkbox" name="q25" value="A"> A. Street chutney</label>
+        <label class="option-item"><input type="checkbox" name="q25" value="B"> B. Tandoori chicken</label>
+        <label class="option-item"><input type="checkbox" name="q25" value="C"> C. Packaged drinking water</label>
+        <label class="option-item"><input type="checkbox" name="q25" value="D"> D. Plain table salt</label>
+      </ul>
+      <button type="button" class="btn-submit" onclick="checkAnswer('q25')">Check Answer</button>
+      <div class="explanation" id="exp-q25">
+        <div class="explanation-title"></div>
+        <p><strong>Explanation:</strong> Street chutney and tandoori chicken are the two examples specifically listed in the notes.</p>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  const trackedQuestions = new Set();
+  const correctQuestions = new Set();
+
+  function checkAnswer(qId) {
+    const card = document.querySelector(`[data-q="${qId}"]`);
+    const qType = card.getAttribute('data-type');
+    const correctAnswer = card.getAttribute('data-answer');
+    const expDiv = document.getElementById(`exp-${qId}`);
+    const expTitle = expDiv.querySelector('.explanation-title');
+
+    let userSelections = [];
+    const inputs = card.querySelectorAll(`input[name="${qId}"]:checked`);
+    
+    inputs.forEach(input => {
+      userSelections.push(input.value);
+    });
+
+    if (userSelections.length === 0) {
+      alert("Please select an answer before checking!");
+      return;
+    }
+
+    userSelections.sort();
+    const userString = userSelections.join(',');
+
+    let isCorrect = (userString === correctAnswer);
+
+    expDiv.classList.remove('correct', 'incorrect');
+    if (isCorrect) {
+      expDiv.classList.add('correct');
+      expTitle.textContent = "Correct!";
+      correctQuestions.add(qId);
+    } else {
+      expDiv.classList.add('incorrect');
+      expTitle.textContent = `Incorrect! Correct answer: ${correctAnswer}`;
+      correctQuestions.delete(qId);
+    }
+
+    expDiv.classList.add('show');
+    trackedQuestions.add(qId);
+
+    // Update scoreboard
+    document.getElementById('answered-count').textContent = trackedQuestions.size;
+    document.getElementById('score-count').textContent = correctQuestions.size;
+  }
+</script>
+
+</body>
+</html>
